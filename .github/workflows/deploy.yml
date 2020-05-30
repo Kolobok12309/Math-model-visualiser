@@ -37,12 +37,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    steps:
     - name: Download artifact build
       uses: actions/download-artifact@v1
       with:
         name: dist
 
-    steps:
     - name: Deploy to Github Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
