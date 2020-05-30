@@ -1,27 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-content>
+      <LineChart
+        label="Func"
+        :data="dataset"
+        style="width: 50%; height: 100%"
+      />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import LineChart from '@/components/lineChart';
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld,
+    LineChart,
+  },
+
+  computed: {
+    dataset() {
+      const length = 15;
+      const result = [];
+      const func = ({ x, c }) => x * x + c;
+
+      for (let i = 0; i < length; i += 1) {
+        const funcRes = func({ x: i, c: 3 });
+
+        result.push({ x: i, y: funcRes });
+      }
+
+      return result;
+    },
   },
 };
 </script>
-
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
