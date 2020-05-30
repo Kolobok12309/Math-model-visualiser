@@ -1,6 +1,6 @@
 module.exports = {
   outputDir: 'docs',
-  publicPath: 'Math-model-visualiser',
+  publicPath: '/math-model-visualiser/',
   transpileDependencies: [
     'vuetify',
   ],
