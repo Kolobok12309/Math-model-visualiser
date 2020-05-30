@@ -10,22 +10,41 @@ on:
     branches: [ master ]
 
 jobs:
-  deploy:
-
+  build:
+    name: Build project
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@master
     - name: Install node
       uses: actions/setup-node@master
- 
+
     - name: Install dependencies
       run: npm i
     - name: Build package
       run: npm run build
-    
+      env:
+        PUBLIC_PATH: ${{ github.event.repository.name }}
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
+
+  deploy:
+    name: Deploy to Github pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    - name: Download artifact build
+      uses: actions/download-artifact@v1
+      with:
+        name: dist
+
+    steps:
     - name: Deploy to Github Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: ./

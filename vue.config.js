@@ -1,5 +1,7 @@
+const process = require('process');
+
 module.exports = {
-  publicPath: '/Math-model-visualiser/',
+  publicPath: process.env.PUBLIC_PATH || '/',
   transpileDependencies: [
     'vuetify',
   ],
