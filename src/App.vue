@@ -31,6 +31,7 @@
 import FuncVisualiser from '@/components/funcVisualiser/index.vue';
 
 import mathFunctions from '@/functions';
+import MathFunction from '@/functions/class';
 
 export default {
   name: 'App',
@@ -47,6 +48,11 @@ export default {
 
   computed: {
     mathFunctions: () => mathFunctions,
+  },
+
+  mounted() {
+    window.mathFunctions = mathFunctions;
+    window.MathFunction = MathFunction;
   },
 };
 </script>

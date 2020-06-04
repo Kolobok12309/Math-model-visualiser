@@ -1,11 +1,7 @@
 import linerFunction from './linear';
 import parabolaFunction from './parabola';
 
-const functions = [
+export default [
   linerFunction,
   parabolaFunction,
 ];
-
-if (window) window.mathFunctions = functions;
-
-export default functions;

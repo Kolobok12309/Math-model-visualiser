@@ -1,6 +1,6 @@
 let id = 0;
 
-class MathFunction {
+export default class MathFunction {
   variables;
 
   func;
@@ -33,7 +33,3 @@ class MathFunction {
     return this.func(arg);
   }
 }
-
-if (window) window.MathFunction = MathFunction;
-
-export default MathFunction;
