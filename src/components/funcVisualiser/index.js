@@ -35,6 +35,21 @@ export default {
 
       return this.func.variables[this.nowVar];
     },
+
+    funcComputed() {
+      const result = {};
+
+      Object.entries(this.func.computed)
+        .forEach(([key, { func }]) => {
+          result[key] = func(this.variables);
+        });
+
+      return result;
+    },
+
+    isShowComputed() {
+      return Object.keys(this.func.computed).length;
+    },
   },
 
   watch: {

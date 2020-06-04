@@ -77,7 +77,7 @@
         </VCol>
 
         <VCol
-          lg="6"
+          lg="3"
           cols="12"
         >
           <VCard>
@@ -94,11 +94,39 @@
                 <VCol
                   v-for="(variable, key) in func.variables"
                   :key="key"
-                  cols="2"
+                  cols="6"
                 >
                   <VTextField
                     v-model.number="variables[key]"
                     :disabled="key === nowVar || pending"
+                    :label="variable.name"
+                  />
+                </VCol>
+              </VRow>
+            </VCardText>
+          </VCard>
+        </VCol>
+
+        <VCol
+          v-show="isShowComputed"
+          lg="3"
+          col="12"
+        >
+          <VCard>
+            <VCardTitle>
+              Вычисляемые параметры
+            </VCardTitle>
+
+            <VCardText>
+              <VRow>
+                <VCol
+                  v-for="(variable, key) in func.computed"
+                  :key="key"
+                  cols="6"
+                >
+                  <VTextField
+                    :value="funcComputed[key]"
+                    readonly
                     :label="variable.name"
                   />
                 </VCol>

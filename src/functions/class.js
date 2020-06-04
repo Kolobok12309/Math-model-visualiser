@@ -11,11 +11,19 @@ export default class MathFunction {
 
   id;
 
-  constructor(name, func, variables, view = null) {
+  constructor({
+    name = null,
+    func = (v) => v,
+    variables = {},
+    view = null,
+    computed = {},
+  } = {}) {
     this.name = name;
     this.func = func;
     this.variables = variables;
+    this.computed = computed;
     this.view = view;
+
     // eslint-disable-next-line no-plusplus
     this.id = id++;
   }

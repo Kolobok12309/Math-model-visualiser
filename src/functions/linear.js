@@ -1,9 +1,9 @@
 import MathFunction from './class';
 
-export default new MathFunction(
-  'Линейная функция',
-  ({ x = 1, c = 0 }) => x + c,
-  {
+export default new MathFunction({
+  name: 'Линейная функция',
+  func: ({ x = 1, c = 0 }) => x + c,
+  variables: {
     x: {
       name: 'X',
       defaultVar: true,
@@ -24,5 +24,11 @@ export default new MathFunction(
       delta: 0.5,
     },
   },
-  'x + c = y',
-);
+  view: 'x + c = y',
+  computed: {
+    g: {
+      name: 'G',
+      func: ({ c }) => c * 5,
+    },
+  },
+});
